@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>layui+mybatisplus数据分页</title>
+    <link rel="stylesheet" href="css/layui.css"/>
+</head>
+<body>
+    <table id="dataList"></table>
+</body>
+<script type="text/javascript" src="layui.js"></script>
+<script type="text/javascript">
+    // 导入layui
+    //一般直接写在一个js文件中
+    layui.use(['table'], function(){
+        let col = [
+            {field: 'id', title: 'ID', width:80, sort: true, fixed: 'left'}
+            ,{field: 'tableName', title: '用户名', width:180}
+            ,{field: 'tableSchema', title: '性别', width:180}
+        ];
+
+        // 定义一个数据表格实例
+        let tab = layui.table;
+        tab.render({
+            elem: '#dataList'
+            ,url: '/findbypage'
+            ,page: true
+            ,cols: [col]
+        });
+    });
+</script>
+</html>
